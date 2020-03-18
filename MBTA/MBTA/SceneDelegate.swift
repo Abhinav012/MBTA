@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import SideMenuSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
+    static let hud = MBProgressHUD()
+    
+    private(set) static var shared: SceneDelegate?
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let navigationBarAppearace = UINavigationBar.appearance()
+
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.barTintColor = #colorLiteral(red: 0.2941176471, green: 0.01568627451, blue: 0.01568627451, alpha: 1)
+        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        guard let windowScene = (scene as? UIWindowScene) else {
+            return
+        }
+        
+        SceneDelegate.shared = self
+        window = UIWindow(windowScene: windowScene)
+        self.updateRoot()
+        return
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -47,7 +62,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    func updateRoot () {
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard UserDefaults.standard.bool(forKey: "isAuthenticated") else {
+            
+            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "LogInViewController") as! LogInViewController
+            let navigation = UINavigationController(rootViewController: viewController)
+            window?.rootViewController = navigation
+            window?.makeKeyAndVisible()
+            return
+        }
+        
+        let viewController = mainStoryboard.instantiateInitialViewController()
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+        
+    }
 
 
 }
 
+extension SceneDelegate {
+    
+        func showHUD() {
+            DispatchQueue.main.async {
+                if let window = self.window {
+                    window.addSubview(SceneDelegate.hud)
+                    SceneDelegate.hud.show(animated: true)
+                }
+            }
+        }
+        
+        func hideHUD() {
+            DispatchQueue.main.async {
+                SceneDelegate.hud.hide(animated: true)
+                SceneDelegate.hud.removeFromSuperview()
+            }
+        }
+}

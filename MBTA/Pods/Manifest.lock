@@ -1,18 +1,43 @@
 PODS:
-  - SDWebImage (5.5.2):
-    - SDWebImage/Core (= 5.5.2)
-  - SDWebImage/Core (5.5.2)
+  - Alamofire (4.9.1)
+  - AlamofireSwiftyJSON (1.0.2):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON (~> 4.0)
+  - iOSDropDown (0.3.4)
+  - JGProgressHUD (2.1)
+  - SDWebImage (5.6.1):
+    - SDWebImage/Core (= 5.6.1)
+  - SDWebImage/Core (5.6.1)
+  - SideMenuSwift (2.0.5)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireSwiftyJSON
+  - iOSDropDown
+  - JGProgressHUD
   - SDWebImage (~> 5.0)
+  - SideMenuSwift
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireSwiftyJSON
+    - iOSDropDown
+    - JGProgressHUD
     - SDWebImage
+    - SideMenuSwift
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireSwiftyJSON: 74ee3804bed06d07857daf1eeb1615c85dba3997
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
+  SideMenuSwift: c7d99c270e0fad922a14b81f1dcc7a84c764bcd5
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 9370f404f70b172058dd11e15b980f57212e81ac
+PODFILE CHECKSUM: 314b18a5bc496825d73724ff0288be07ee77135e
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0
