@@ -64,13 +64,6 @@ class LogInViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func MovetoHome() {
-    
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "SideMenuController") as! SideMenuController
-        
-        SceneDelegate.shared?.window?.replaceRootViewController(with: viewController , animated: true)
-    }
     
     @IBAction func GuestSession_Tapped(_ sender: UIButton) {
         

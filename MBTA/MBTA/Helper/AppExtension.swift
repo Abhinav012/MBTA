@@ -61,6 +61,22 @@ public extension UIView {
 
 public extension String {
     
+	func formaeID() -> String {
+		
+		switch self.count {
+		case 0:
+			return "0000"
+		case 1:
+			return "000"+self
+		case 2:
+			return "00"+self
+		case 3:
+			return "0"+self
+		default:
+			return self
+		}
+	}
+	
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)

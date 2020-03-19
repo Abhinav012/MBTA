@@ -38,6 +38,8 @@ class HomeController: UIViewController {
     var commodities = [Commodity]()
     var price = Price()
     
+    var flotingBtn = UIButton()
+    
     static var mcxGoldColor = UIColor.noChangeColor
     static var mcxSilverColor = UIColor.noChangeColor
     static var inrRateColor = UIColor.noChangeColor
@@ -57,6 +59,10 @@ class HomeController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+		
+		if isAuthenticated {
+			self.flotingBtn.alpha = 1
+		}
         navigationController?.navigationBar.isHidden = false
     }
     
@@ -71,8 +77,7 @@ class HomeController: UIViewController {
 		}
 		
 		self.Bottom_SC.constant = extraHeight
-		
-		
+    
         Bottom_DrawerView.attachTo(view: self.view)
         Bottom_DrawerView.snapPositions = [.collapsed, .partiallyOpen]
         Bottom_DrawerView.insetAdjustmentBehavior = .superviewSafeArea
@@ -89,37 +94,40 @@ class HomeController: UIViewController {
         SideMenuController.preferences.basic.menuWidth = self.view.frame.width/1.3
         SideMenuController.preferences.basic.enablePanGesture = true
         SideMenuController.preferences.basic.supportedOrientations = .portrait
-        
+		
     }
     
     private func setupFloatingButton() {
         
-        let button = UIButton(frame: CGRect(x: 150, y: 550, width: 75, height: 75))
-        button.backgroundColor = UIColor.red
-        button.addTarget(self, action: #selector(floatingButton_Tapped), for: .touchUpInside)
-        let windowScene = UIApplication.shared
-            .connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .first
-        if let windowScene = windowScene as? UIWindowScene {
-            let popupWindow = UIWindow(windowScene: windowScene)
-            popupWindow.addSubview(button)
+        guard isAuthenticated else {
+            return
         }
+        
+        var bottomMargin: CGFloat = 0
+        if let bottomSafeArea = SceneDelegate.shared?.window?.safeAreaInsets.bottom {
+            bottomMargin = bottomSafeArea
+        }
+        
+        self.flotingBtn = UIButton(frame: CGRect(x: self.view.frame.width - 80, y: self.view.frame.height - (80 + bottomMargin), width: 60, height: 60))
+        self.flotingBtn.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
+        self.flotingBtn.imageEdgeInsets = UIEdgeInsets (top: 10, left: 10, bottom: 10, right: 10)
+        self.flotingBtn.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+        self.flotingBtn.cornerRadius = 30
+        self.flotingBtn.enableShadow = true
+        self.flotingBtn.layer.shadowColor = UIColor.black.cgColor
+        self.flotingBtn.addTarget(self, action: #selector(floatingButton_Tapped), for: .touchUpInside)
+        
+        SceneDelegate.shared?.window?.addSubview(self.flotingBtn)
     }
     
     @objc func floatingButton_Tapped() {
-        
-        let windowScene = UIApplication.shared
-            .connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .first
-        if let windowScene = windowScene as? UIWindowScene {
-            
-            if let visibleVC = UIWindow(windowScene: windowScene).rootViewController {
-                
+        if let topviewController = navigationController?.topViewController {
+          
+            guard topviewController.isKind(of: NotificationController.self) else {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NotificationController") as! NotificationController
-                visibleVC.present(vc, animated: true, completion: nil)
+                       let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NotificationController") as! NotificationController
+                       navigationController?.pushViewController(vc, animated: true)
+                return
             }
             
         }
@@ -452,6 +460,20 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         return CGSize(width: (self.view.frame.width-1.5)/4, height: 75)
     }
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		collectionView.deselectItem(at: indexPath, animated: true)
+		
+		if collectionView.tag == 1 {
+			self.flotingBtn.alpha = 0
+			let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+			let vc = storyboard.instantiateViewController(withIdentifier: "AdertisementViewController") as! AdertisementViewController
+			vc.ad = self.ads[indexPath.row]
+			navigationController?.pushViewController(vc, animated: true)
+			
+		}
+	}
 }
 
 
@@ -461,8 +483,10 @@ extension HomeController : DrawerViewDelegate {
 		if targetPosition == .partiallyOpen {
 			self.Bottom_Menubar.alpha = isAuthenticated ? 1 : 0
 			self.Top_Menubar.alpha = 1
+            self.flotingBtn.alpha = 0
 		} else {
-			
+            self.Top_Menubar.alpha = 0
+            self.Bottom_Menubar.alpha = 0
 		}
 	}
 	
@@ -473,9 +497,8 @@ extension HomeController : DrawerViewDelegate {
             }
         } else {
             UIView.animate(withDuration: 0.5) {
+                self.flotingBtn.alpha = 1
                 self.BD_btn.transform = .identity
-				self.Top_Menubar.alpha = 0
-				self.Bottom_Menubar.alpha = 0
             }
         }
     }

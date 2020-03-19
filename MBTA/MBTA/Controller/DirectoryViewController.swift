@@ -11,7 +11,7 @@ import JGProgressHUD
 import SDWebImage
 import iOSDropDown
 
-class DirectoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate  {
+class DirectoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate , UISearchBarDelegate {
 
 	@IBOutlet var Directory_tbl: UITableView!
 	
@@ -26,17 +26,19 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 	@IBOutlet var SearchBar_HC: NSLayoutConstraint!
 
 	var hud = JGProgressHUD(style: .dark)
-
+    
+    var directoriesOrignal = [Firm]()
 	var directories = [Firm]()
 	var bazars = [String]()
 	var categories = ["Retail","Manufacturer","Whole Seller","Silver","Gold","Diamond"]
 	
-	var filterCategoryBy = String()
-	var filterBazarBy = String()
+	var filterCategoryBy = "Select Category"
+	var filterBazarBy = "Select Bazar"
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		self.SearchBar_HC.constant = 0
+		self.Searchbar.delegate = self
 		self.Directory_tbl.tableFooterView = UIView()
     }
     
@@ -65,7 +67,6 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 						self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
 						self.hud.textLabel.text = "No Directory Found !!!"
 						self.hud.dismiss(afterDelay: 2.0)
-						
 						self.Directory_tbl.reloadData()
 						self.hud.dismiss(afterDelay: 1.0)
 					}
@@ -73,7 +74,7 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 					return
 				}
 				self.directories = directories
-				
+                self.directoriesOrignal = directories
 				DispatchQueue.global().async {
 					let bazarAll = self.directories.map({ (firm) -> String in
 						return (firm.bazar ?? "")
@@ -101,15 +102,48 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 				return
 			}
 			
-			print(error.localizedDescription)
-			self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
-			self.hud.textLabel.text = "Try Later !!!"
-			self.hud.dismiss(afterDelay: 2.0)
+			DispatchQueue.main.async {
+				
+				print(error.localizedDescription)
+				self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+				self.hud.textLabel.text = "Try Later !!!"
+				self.hud.dismiss(afterDelay: 2.0)
+			}
 			
 		}
 	}
 	
+    func filterDirectory () {
+        if self.filterBazarBy != "Select Bazar" {
+            self.directories = self.directoriesOrignal.filter({ (firm) -> Bool in
+                return firm.bazar?.lowercased() == filterBazarBy.lowercased()
+            })
+        } else {
+            self.directories = self.directoriesOrignal
+        }
+        
+        
+        if self.filterCategoryBy != "Select Category" {
+            self.directories = self.directories.filter({ (firm) -> Bool in
+                if let nature = firm.nature {
+                    return nature.lowercased().contains(filterCategoryBy.lowercased())
+                }
+                    return false
+            })
+        }
+        
+        DispatchQueue.main.async {
+            self.Directory_tbl.reloadData()
+        }
+    }
+    
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if textField.tag == 0 {
+            self.Bazar_DropDown.showList()
+        } else {
+            self.Category_DropDown.showList()
+        }
 		return false
 	}
 	
@@ -125,6 +159,7 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 		Bazar_DropDown.didSelect{(selectedText , index ,id) in
 			self.filterBazarBy = selectedText
 			self.Bazar_DropDown.hideList()
+            self.filterDirectory()
 			
 		}
 		Bazar_DropDown.text = "Select Bazar"
@@ -138,6 +173,7 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 		Category_DropDown.didSelect{(selectedText , index ,id) in
 			self.filterCategoryBy = selectedText
 			self.Category_DropDown.hideList()
+            self.filterDirectory()
 			
 		}
 		Category_DropDown.text = "Select Category"
@@ -167,6 +203,7 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 			}
 		} else {
 			self.SearchBar_HC.constant = 0
+			self.filterDirectory()
 			UIView.animate(withDuration: 0.3, animations: {
 				self.view.layoutIfNeeded()
 			}) { (true) in
@@ -175,8 +212,41 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 		}
 		
 	}
-	
 
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		DispatchQueue.global().async {
+			if searchText.count > 0 {
+				
+				self.directories = self.directoriesOrignal.filter({ (firm) -> Bool in
+					if let nature = firm.nature , let id = firm.memberid, let name = firm.fname {
+						return (nature.lowercased().contains(searchText.lowercased()) || name.lowercased().contains(searchText.lowercased()) || id.lowercased().contains(searchText.lowercased()))
+					}
+					return false
+				})
+				
+				DispatchQueue.main.async {
+					self.Directory_tbl.reloadData()
+				}
+				
+			} else {
+				self.filterDirectory()
+			}
+		}
+	}
+
+	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+		 
+	}
+	
+	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+		
+	}
+	
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		
+	}
+	
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		self.directories.count
 	}
@@ -197,7 +267,7 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 			
 			let firm = self.directories[indexPath.section]
 			
-			cell.Firm_id.text = firm.memberid
+			cell.Firm_id.text = (firm.memberid == nil ? "" : firm.memberid)?.formaeID()
 			cell.Firm_type.text = firm.nature
 			cell.Firm_title.text = firm.fname
 			cell.Firm_adress.text = firm.fadd
@@ -211,7 +281,7 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 				cell.Link_btn.setTitle(nil, for: .normal)
 			}
 			DispatchQueue.main.async {
-				cell.Firm_logo.sd_setImage(with: URL(string: baseURL+(firm.flogo ?? "")),placeholderImage: #imageLiteral(resourceName: "applogo"), completed: nil)
+				cell.Firm_logo.sd_setImage(with: URL(string: baseURL+(firm.flogo ?? "")), placeholderImage: #imageLiteral(resourceName: "appLogo"), completed: nil)
 			}
 			return cell
 		}
@@ -250,6 +320,17 @@ class DirectoryViewController: UIViewController, UITableViewDelegate, UITableVie
 	
 	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 		return 10
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		
+		let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc = storyboard.instantiateViewController(withIdentifier: "MemberDetailViewController") as! MemberDetailViewController
+		vc.firm = self.directories[indexPath.section]
+		navigationController?.pushViewController(vc, animated: true)
+		
+		
 	}
 	
 }
