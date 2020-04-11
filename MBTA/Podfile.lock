@@ -10,6 +10,8 @@ PODS:
   - SDWebImage/Core (5.6.1)
   - SideMenuSwift (2.0.5)
   - SwiftyJSON (4.3.0)
+  - TTGTagCollectionView (1.11.1)
+  - TweeTextField (1.6.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -18,6 +20,8 @@ DEPENDENCIES:
   - JGProgressHUD
   - SDWebImage (~> 5.0)
   - SideMenuSwift
+  - TTGTagCollectionView
+  - TweeTextField
 
 SPEC REPOS:
   trunk:
@@ -28,6 +32,8 @@ SPEC REPOS:
     - SDWebImage
     - SideMenuSwift
     - SwiftyJSON
+    - TTGTagCollectionView
+    - TweeTextField
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -37,7 +43,9 @@ SPEC CHECKSUMS:
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   SideMenuSwift: c7d99c270e0fad922a14b81f1dcc7a84c764bcd5
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  TTGTagCollectionView: 86fcbfa6a7493c9e860b01c2e693cffc8acf6de1
+  TweeTextField: 2bfb6c48fdbf6eb8038260430244c9f6ebb47bce
 
-PODFILE CHECKSUM: 314b18a5bc496825d73724ff0288be07ee77135e
+PODFILE CHECKSUM: f6b201dd1295ca64e0dd07dc9a7fdc3caf893dc7
 
 COCOAPODS: 1.9.0

@@ -148,22 +148,129 @@ class APIManager{
     }
     
     
-    func getuserProfile(for userId : String, completion : @escaping (Bool, Error?) -> Void) {
+    
+    func getuserProfile(completion : @escaping (ProfileModel?, Error?) -> Void) {
         
-        let parameters = ["memberid": userId]
+        var id: String?
         
-        Alamofire.request(APIURLRequest.fetchUserProfile(parameters))
-            .responseJSON(completionHandler: { (response) in
+        if let data = UserDefaults.standard.value(forKey:"user@MBTA") as? Data {
+            let user = try? PropertyListDecoder().decode(User.self, from: data)
+            id = user?.userid
+            
+            let toRemove = "mbta"
+            if let range = id?.range(of: toRemove) {
+               id?.removeSubrange(range)
+            }
+        }
+        
+        guard let userId = id else {
+            return
+        }
+
+        let params = ["memberid": userId]
+        let url = URL (string: "https://www.techiveservices.com/Bullion_Association/Mbta/api/profile_details.php")
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        
+        let postString = APIManager.getPostString(params: params)
+        request.httpBody = postString.data(using: .utf8)
+        
+        DispatchQueue.global().async {
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 
-                switch response.result {
-                case .success(let json):
-                    print(json)
-                    completion(true,nil)
-                case .failure(let error):
-                    completion(false,error)
+                guard error == nil else {
+                    completion(nil, error)
+                    return
                 }
-            })
+                do {
+                    guard let jsonData = data else {
+                        completion(nil, error)
+                        return
+                    }
+                    
+                    let profileData = try JSONDecoder().decode(ProfileModel.self, from: jsonData)
+                    
+                    completion(profileData, nil)
+                    
+                } catch {
+                    completion(nil, error)
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func addNewMember(for parametes: [String: Any], completion: @escaping (Bool, Error?) -> Void ) {
         
+        let url = URL (string: "https://www.techiveservices.com/Bullion_Association/Mbta/api/add_member.php")
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        
+        let postString = APIManager.getPostString(params: parametes)
+        request.httpBody = postString.data(using: .utf8)
+        
+        DispatchQueue.global().async {
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                guard error == nil else {
+                    completion(false, error)
+                    return
+                }
+                
+                completion(true, error)
+            }
+            task.resume()
+        }
+    }
+    
+    func updateFirm(for parametes: [String: Any], completion: @escaping (Bool, Error?) -> Void ) {
+        
+        let url = URL (string: "https://www.techiveservices.com/Bullion_Association/Mbta/api/firm_update.php")
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        
+        let postString = APIManager.getPostString(params: parametes)
+        request.httpBody = postString.data(using: .utf8)
+        
+        DispatchQueue.global().async {
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                guard error == nil else {
+                    completion(false, error)
+                    return
+                }
+                
+                completion(true, error)
+            }
+            task.resume()
+        }
+    }
+    
+    func updateMember(for parametes: [String: Any], completion: @escaping (Bool, Error?) -> Void ) {
+        
+        let url = URL (string: "https://www.techiveservices.com/Bullion_Association/Mbta/api/update_member_profile.php")
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        
+        let postString = APIManager.getPostString(params: parametes)
+        request.httpBody = postString.data(using: .utf8)
+        
+        DispatchQueue.global().async {
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                guard error == nil else {
+                    completion(false, error)
+                    return
+                }
+                
+                completion(true, error)
+            }
+            task.resume()
+        }
     }
     
     func fetchDirectoryData(completion: @escaping (DirectoryData?, Error?) -> Void) {
@@ -185,6 +292,34 @@ class APIManager{
                     
                     completion(directoryData, nil)
 					
+                } catch {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+        
+    }
+    
+    func fetchBoardMember(completion: @escaping (BoardModel?,Error?)->Void) {
+        
+        let url = URL(string: "https://www.techiveservices.com/Bullion_Association/Mbta/api/board_members.php")
+        
+        let request = URLRequest(url: url!)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error{
+                completion( nil, error)
+            } else {
+                guard let jsonData = data else {
+                    completion(nil, error)
+                    return
+                }
+                do {
+                    let directoryData = try JSONDecoder().decode(BoardModel.self, from: jsonData)
+                    
+                    completion(directoryData, nil)
+                    
                 } catch {
                     completion(nil, error)
                 }

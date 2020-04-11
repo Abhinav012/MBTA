@@ -10,5 +10,8 @@
 #define MBTA_Bridging_Header_h
 
 #import "MBProgressHUD.h"
+#import "TPKeyboardAvoidingTableView.h"
+#import "TPKeyboardAvoidingTableView.h"
+#import "TPKeyboardAvoidingScrollView.h"
 
 #endif /* MBTA_Bridging_Header_h */

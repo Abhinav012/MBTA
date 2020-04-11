@@ -39,10 +39,33 @@
 		414859802412CD8800F70719 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4148597F2412CD8800F70719 /* UINavigationController+Extension.swift */; };
 		414859822412F01300F70719 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414859812412F01300F70719 /* NotificationCell.swift */; };
 		414859842412F06500F70719 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414859832412F06500F70719 /* NotificationController.swift */; };
+		4193071F24316A4500786552 /* BoardMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193071E24316A4500786552 /* BoardMemberCell.swift */; };
+		4193072124316B0100786552 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193072024316B0100786552 /* BoardViewController.swift */; };
+		4193072324316DB800786552 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193072224316DB800786552 /* BoardModel.swift */; };
 		41CD4D6F241DA9F300CEB075 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD4D6E241DA9F300CEB075 /* LogInViewController.swift */; };
 		41CD4D71241DAE1500CEB075 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD4D70241DAE1500CEB075 /* ForgotPasswordViewController.swift */; };
+		41CE08582427EE7000380C67 /* FirmProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE08572427EE7000380C67 /* FirmProfileCell.swift */; };
+		41CE085A2427EE8800380C67 /* MemberProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE08592427EE8800380C67 /* MemberProfileCell.swift */; };
+		41CE085C2427F8B000380C67 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE085B2427F8B000380C67 /* ProfileViewController.swift */; };
+		41CE085E2427FF4A00380C67 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE085D2427FF4A00380C67 /* ProfileModel.swift */; };
+		41CE0860242A180F00380C67 /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE085F242A180F00380C67 /* AddMemberViewController.swift */; };
+		41CE0862242A740C00380C67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE0861242A740B00380C67 /* ImagePicker.swift */; };
+		41CE086C242AA69E00380C67 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CE0864242AA69700380C67 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		41CE086D242AA69E00380C67 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CE0866242AA69900380C67 /* TPKeyboardAvoidingScrollView.m */; };
+		41CE086E242AA69E00380C67 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CE0867242AA69900380C67 /* TPKeyboardAvoidingCollectionView.m */; };
+		41CE086F242AA69E00380C67 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CE0869242AA69B00380C67 /* TPKeyboardAvoidingTableView.m */; };
+		41EE18F7243B0A19004312C0 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EE18F6243B0A19004312C0 /* HistoryViewController.swift */; };
+		41EE18F9243B0A46004312C0 /* HistoryMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EE18F8243B0A46004312C0 /* HistoryMemberCell.swift */; };
+		41EE18FB243B0A60004312C0 /* HistoryInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EE18FA243B0A60004312C0 /* HistoryInfoCell.swift */; };
+		41EE18FD243B1FB0004312C0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EE18FC243B1FB0004312C0 /* AboutViewController.swift */; };
+		41EE18FF243B1FD5004312C0 /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EE18FE243B1FD5004312C0 /* VisionViewController.swift */; };
+		41EE1901243B2EF3004312C0 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EE1900243B2EF3004312C0 /* RadioButton.swift */; };
+		41EE1903243B5350004312C0 /* SendNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EE1902243B5350004312C0 /* SendNotificationController.swift */; };
 		62873396992DF523EBA51C45 /* Pods_MBTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59480BD8A047794FA9507F4 /* Pods_MBTA.framework */; };
 		A073BC742421D8D100B8501E /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A073BC732421D8D100B8501E /* DirectoryViewController.swift */; };
+		A0802BFD24233BCB00CB2DB4 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0802BFC24233BCB00CB2DB4 /* MemberCell.swift */; };
+		A0802BFF24233CAB00CB2DB4 /* MemberDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0802BFE24233CAB00CB2DB4 /* MemberDetailViewController.swift */; };
+		A0802C0124234FB900CB2DB4 /* AdertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0802C0024234FB900CB2DB4 /* AdertisementViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,10 +105,37 @@
 		4148597F2412CD8800F70719 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		414859812412F01300F70719 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		414859832412F06500F70719 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		4193071E24316A4500786552 /* BoardMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMemberCell.swift; sourceTree = "<group>"; };
+		4193072024316B0100786552 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		4193072224316DB800786552 /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
 		41CD4D6E241DA9F300CEB075 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		41CD4D70241DAE1500CEB075 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		41CE08572427EE7000380C67 /* FirmProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmProfileCell.swift; sourceTree = "<group>"; };
+		41CE08592427EE8800380C67 /* MemberProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileCell.swift; sourceTree = "<group>"; };
+		41CE085B2427F8B000380C67 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		41CE085D2427FF4A00380C67 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		41CE085F242A180F00380C67 /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
+		41CE0861242A740B00380C67 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		41CE0864242AA69700380C67 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		41CE0865242AA69800380C67 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		41CE0866242AA69900380C67 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		41CE0867242AA69900380C67 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		41CE0868242AA69A00380C67 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		41CE0869242AA69B00380C67 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		41CE086A242AA69D00380C67 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		41CE086B242AA69D00380C67 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		41EE18F6243B0A19004312C0 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		41EE18F8243B0A46004312C0 /* HistoryMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMemberCell.swift; sourceTree = "<group>"; };
+		41EE18FA243B0A60004312C0 /* HistoryInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryInfoCell.swift; sourceTree = "<group>"; };
+		41EE18FC243B1FB0004312C0 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		41EE18FE243B1FD5004312C0 /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
+		41EE1900243B2EF3004312C0 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		41EE1902243B5350004312C0 /* SendNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNotificationController.swift; sourceTree = "<group>"; };
 		77DF8DB9EB929803D2BE4008 /* Pods-MBTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTA.debug.xcconfig"; path = "Target Support Files/Pods-MBTA/Pods-MBTA.debug.xcconfig"; sourceTree = "<group>"; };
 		A073BC732421D8D100B8501E /* DirectoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
+		A0802BFC24233BCB00CB2DB4 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
+		A0802BFE24233CAB00CB2DB4 /* MemberDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailViewController.swift; sourceTree = "<group>"; };
+		A0802C0024234FB900CB2DB4 /* AdertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdertisementViewController.swift; sourceTree = "<group>"; };
 		A59480BD8A047794FA9507F4 /* Pods_MBTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15E1D880E377981612D3293 /* Pods-MBTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTA.release.xcconfig"; path = "Target Support Files/Pods-MBTA/Pods-MBTA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +171,8 @@
 				2081D79A23FC4AD900783627 /* Noticeboard.swift */,
 				20CE171723FD840600F5A6E4 /* Advertisements.swift */,
 				413A5003241FF7A1005FEDD7 /* LoginModel.swift */,
+				41CE085D2427FF4A00380C67 /* ProfileModel.swift */,
+				4193072224316DB800786552 /* BoardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,8 +237,11 @@
 		4132C4DF241D803500953432 /* Class File */ = {
 			isa = PBXGroup;
 			children = (
+				41CE0863242AA68200380C67 /* TPKeyboardAvoiding */,
 				413A500A24200763005FEDD7 /* ProgressHUD */,
 				4132C4E0241D804300953432 /* DrawerView */,
+				41CE0861242A740B00380C67 /* ImagePicker.swift */,
+				41EE1900243B2EF3004312C0 /* RadioButton.swift */,
 			);
 			path = "Class File";
 			sourceTree = "<group>";
@@ -228,6 +283,15 @@
 				414859832412F06500F70719 /* NotificationController.swift */,
 				41CD4D70241DAE1500CEB075 /* ForgotPasswordViewController.swift */,
 				A073BC732421D8D100B8501E /* DirectoryViewController.swift */,
+				A0802BFE24233CAB00CB2DB4 /* MemberDetailViewController.swift */,
+				A0802C0024234FB900CB2DB4 /* AdertisementViewController.swift */,
+				41CE085B2427F8B000380C67 /* ProfileViewController.swift */,
+				41CE085F242A180F00380C67 /* AddMemberViewController.swift */,
+				4193072024316B0100786552 /* BoardViewController.swift */,
+				41EE18F6243B0A19004312C0 /* HistoryViewController.swift */,
+				41EE18FC243B1FB0004312C0 /* AboutViewController.swift */,
+				41EE18FE243B1FD5004312C0 /* VisionViewController.swift */,
+				41EE1902243B5350004312C0 /* SendNotificationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,8 +305,29 @@
 				20CE171923FD87DA00F5A6E4 /* AdvertisementsCollectionViewCell.swift */,
 				413A50152421C50C005FEDD7 /* FirmCell.swift */,
 				413A50172421C524005FEDD7 /* FirmMemberCell.swift */,
+				A0802BFC24233BCB00CB2DB4 /* MemberCell.swift */,
+				41CE08572427EE7000380C67 /* FirmProfileCell.swift */,
+				41CE08592427EE8800380C67 /* MemberProfileCell.swift */,
+				4193071E24316A4500786552 /* BoardMemberCell.swift */,
+				41EE18F8243B0A46004312C0 /* HistoryMemberCell.swift */,
+				41EE18FA243B0A60004312C0 /* HistoryInfoCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		41CE0863242AA68200380C67 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				41CE0868242AA69A00380C67 /* TPKeyboardAvoidingCollectionView.h */,
+				41CE0867242AA69900380C67 /* TPKeyboardAvoidingCollectionView.m */,
+				41CE086A242AA69D00380C67 /* TPKeyboardAvoidingScrollView.h */,
+				41CE0866242AA69900380C67 /* TPKeyboardAvoidingScrollView.m */,
+				41CE0865242AA69800380C67 /* TPKeyboardAvoidingTableView.h */,
+				41CE0869242AA69B00380C67 /* TPKeyboardAvoidingTableView.m */,
+				41CE086B242AA69D00380C67 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				41CE0864242AA69700380C67 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+			);
+			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 		F4AFE9C50CA4E70F5848D752 /* Pods */ = {
@@ -369,11 +454,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41EE18FF243B1FD5004312C0 /* VisionViewController.swift in Sources */,
+				41CE085E2427FF4A00380C67 /* ProfileModel.swift in Sources */,
+				A0802BFF24233CAB00CB2DB4 /* MemberDetailViewController.swift in Sources */,
 				20DA0D8423F94A0B00172AB1 /* HomeController.swift in Sources */,
 				413A50182421C524005FEDD7 /* FirmMemberCell.swift in Sources */,
 				4132C4E7241D805800953432 /* Interpolation.swift in Sources */,
+				41CE085A2427EE8800380C67 /* MemberProfileCell.swift in Sources */,
 				413A5014242168DE005FEDD7 /* Member.swift in Sources */,
 				20EC428A23FAE6DE00DBA8FB /* PriceCollectionViewCell.swift in Sources */,
+				41EE1901243B2EF3004312C0 /* RadioButton.swift in Sources */,
 				414859802412CD8800F70719 /* UINavigationController+Extension.swift in Sources */,
 				4132C4E9241D805800953432 /* Overlay.swift in Sources */,
 				413A5013242168DE005FEDD7 /* DirectoryData.swift in Sources */,
@@ -382,24 +472,42 @@
 				20CE171823FD840600F5A6E4 /* Advertisements.swift in Sources */,
 				41CD4D71241DAE1500CEB075 /* ForgotPasswordViewController.swift in Sources */,
 				A073BC742421D8D100B8501E /* DirectoryViewController.swift in Sources */,
+				41CE086D242AA69E00380C67 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				413A500D24200774005FEDD7 /* MBProgressHUD.m in Sources */,
+				41CE0862242A740C00380C67 /* ImagePicker.swift in Sources */,
 				20DA0D8023F94A0B00172AB1 /* AppDelegate.swift in Sources */,
 				20DA0D8223F94A0B00172AB1 /* SceneDelegate.swift in Sources */,
+				41CE086F242AA69E00380C67 /* TPKeyboardAvoidingTableView.m in Sources */,
 				2081D79923FC47F400783627 /* Price.swift in Sources */,
 				413A50162421C50C005FEDD7 /* FirmCell.swift in Sources */,
+				4193072124316B0100786552 /* BoardViewController.swift in Sources */,
+				41CE08582427EE7000380C67 /* FirmProfileCell.swift in Sources */,
 				414859822412F01300F70719 /* NotificationCell.swift in Sources */,
 				20BAB4B523FC3E0C00CA73F8 /* Commodities.swift in Sources */,
+				41CE086E242AA69E00380C67 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				413A5004241FF7A1005FEDD7 /* LoginModel.swift in Sources */,
+				41EE18FB243B0A60004312C0 /* HistoryInfoCell.swift in Sources */,
+				A0802C0124234FB900CB2DB4 /* AdertisementViewController.swift in Sources */,
 				413A5012242168DE005FEDD7 /* Firm.swift in Sources */,
+				A0802BFD24233BCB00CB2DB4 /* MemberCell.swift in Sources */,
 				20BAB4B723FC3F9D00CA73F8 /* APIManager.swift in Sources */,
+				41CE085C2427F8B000380C67 /* ProfileViewController.swift in Sources */,
+				41EE18F9243B0A46004312C0 /* HistoryMemberCell.swift in Sources */,
+				41CE086C242AA69E00380C67 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2081D79B23FC4AD900783627 /* Noticeboard.swift in Sources */,
 				414859842412F06500F70719 /* NotificationController.swift in Sources */,
+				41EE1903243B5350004312C0 /* SendNotificationController.swift in Sources */,
+				41CE0860242A180F00380C67 /* AddMemberViewController.swift in Sources */,
 				4132C4E8241D805800953432 /* Extensions.swift in Sources */,
 				4132C4EA241D805800953432 /* DrawerView.swift in Sources */,
 				41CD4D6F241DA9F300CEB075 /* LogInViewController.swift in Sources */,
 				20CE171C23FDB61000F5A6E4 /* AppExtension.swift in Sources */,
+				4193071F24316A4500786552 /* BoardMemberCell.swift in Sources */,
+				4193072324316DB800786552 /* BoardModel.swift in Sources */,
 				20CE171A23FD87DA00F5A6E4 /* AdvertisementsCollectionViewCell.swift in Sources */,
+				41EE18F7243B0A19004312C0 /* HistoryViewController.swift in Sources */,
 				4148597E24119CE800F70719 /* LeftMenuController.swift in Sources */,
+				41EE18FD243B1FB0004312C0 /* AboutViewController.swift in Sources */,
 				20BAB4BA23FC3FF500CA73F8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,15 +13,15 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct Member : Codable {
-	let senderid : String?
-	let name : String?
-	let email : String?
-	let mobile1 : String?
-	let mobile2 : String?
-	let resi_add : String?
-	let photo : String?
-	let designation : String?
-	let post : String?
+	var senderid : String?
+	var name : String?
+	var email : String?
+	var mobile1 : String?
+	var mobile2 : String?
+	var resi_add : String?
+	var photo : String?
+	var designation : String?
+	var post : String?
 
 	enum CodingKeys: String, CodingKey {
 

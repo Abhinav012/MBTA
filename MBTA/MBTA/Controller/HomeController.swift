@@ -59,12 +59,22 @@ class HomeController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-		
-		if isAuthenticated {
-			self.flotingBtn.alpha = 1
-		}
+		self.flotingBtn.alpha = 0
         navigationController?.navigationBar.isHidden = false
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+        if isAuthenticated && self.Bottom_DrawerView.position != .partiallyOpen {
+                self.flotingBtn.alpha = 1
+            }
+          navigationController?.navigationBar.isHidden = true
+          fetchHomeData()
+      }
+      
+      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          
+      }
     
     func setupTabDrawerView() {
 		self.Top_Menubar.alpha = 0
@@ -134,11 +144,7 @@ class HomeController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-        fetchHomeData()
-    }
+  
     
     func fetchHomeData () {
         loader.startAnimating()

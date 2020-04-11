@@ -12,4 +12,6 @@ target 'MBTA' do
 	pod 'SideMenuSwift'
 	pod 'SDWebImage', '~> 5.0'
 	pod 'iOSDropDown'
+  pod 'TweeTextField'
+pod 'TTGTagCollectionView'
 end
